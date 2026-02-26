@@ -3,18 +3,26 @@ const client = new Discord.Client({ checkUpdate: false });
 const express = require('express');
 const app = express();
 
-// هذا السيرفر عشان "ريندر" يقتنع إن السكربت شغال
-app.get('/', (req, res) => {
-  res.send('Your account is now 24/7 Online!');
-});
+app.get('/', (req, res) => res.send('✅ Presence is Active!'));
+app.listen(process.env.PORT || 3000);
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log('Express server is running.');
-});
-
-client.on('ready', () => {
-  console.log(`SUCCESS: Logged in as ${client.user.tag}`);
-  client.user.setPresence({ status: 'online' });
+client.on('ready', async () => {
+  console.log(`✅ SUCCESS: Logged in as ${client.user.tag}`);
+  
+  const r = new Discord.RichPresence()
+    .setApplicationId('1476320950323642478')
+    .setType('PLAYING')
+    .setName('saif ₉₁')
+    .setDetails('ME...')
+    .setState('Watching ˢᵃᶤᶠ ₉₁')
+    .setStartTimestamp(Date.now())
+    .setAssetsLargeImage('https://i.imgur.com/8fEkSZC.jpeg')
+    .setAssetsLargeText('saif ₉₁')
+    .addButton('ME ?', 'https://linktr.ee/povce')
+    .addButton('server', 'https://discord.gg/3HzTN5rv');
+  
+  client.user.setActivity(r);
+  console.log('✅ Presence updated with Imgur image!');
 });
 
 client.login(process.env.TOKEN);
