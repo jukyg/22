@@ -13,7 +13,7 @@ client.on('ready', async () => {
     .setApplicationId('1476320950323642478')
     .setType('PLAYING')
     .setName('saif ₉₁')
-    .setDetails('ME... 🚗')
+    .setDetails('ME... ')
     .setState('Watching ˢᵃᶤᶠ ₉₁')
     .setStartTimestamp(Date.now())
     // بدون صورة
