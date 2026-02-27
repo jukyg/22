@@ -20,7 +20,6 @@ client.on('ready', async () => {
     .addButton('ME ?', 'https://linktr.ee/povce')
     .addButton('server', 'https://discord.gg/3HzTN5rv');
 
-  const spotify = new Discord.CustomStatus()
   client.user.setPresence({
     activities: [
       r,
@@ -29,9 +28,6 @@ client.on('ready', async () => {
         type: 'LISTENING',
         details: 'Rock That Body',
         state: 'Black Eyed Peas',
-        assets: {
-          large_image: 'https://i.scdn.co/image/ab67616d0000b273764373507116238dfc7e638d',
-        }
       }
     ],
     status: 'online'
