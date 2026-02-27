@@ -28,6 +28,9 @@ client.on('ready', async () => {
         type: 'LISTENING',
         details: 'Rock That Body',
         state: 'Black Eyed Peas',
+        assets: {
+          large_image: 'spotify:ab67616d0000b273764373507116238dfc7e638d',
+        }
       }
     ],
     status: 'online'
