@@ -2,16 +2,14 @@ const Discord = require('discord.js-selfbot-v13');
 const client = new Discord.Client({ checkUpdate: false });
 const express = require('express');
 const app = express();
-
 app.get('/', (req, res) => res.send('✅ Presence is Active!'));
 app.listen(process.env.PORT || 3000);
 
 client.on('ready', async () => {
   console.log(`✅ SUCCESS: Logged in as ${client.user.tag}`);
   
-  // ضبط العداد ليكون 178 ساعة للخلف
   const hoursAgo = Date.now() - (178 * 60 * 60 * 1000);
-
+  
   const r = new Discord.RichPresence()
     .setApplicationId('1476320950323642478')
     .setType('PLAYING')
@@ -21,26 +19,25 @@ client.on('ready', async () => {
     .setStartTimestamp(hoursAgo) 
     .addButton('ME ?', 'https://linktr.ee/povce')
     .addButton('server', 'https://discord.gg/3HzTN5rv');
-  
-  // تشغيل الحالة الأساسية (اللعب) وحالة Spotify معاً
+
+  const spotify = new Discord.CustomStatus()
   client.user.setPresence({
     activities: [
-      r, 
+      r,
       {
         name: 'Spotify',
         type: 'LISTENING',
         details: 'Rock That Body',
         state: 'Black Eyed Peas',
         assets: {
-          large_image: 'spotify:ab67616d0000b273764373507116238dfc7e638d',
-          large_text: 'Spotify 24/7'
+          large_image: 'https://i.scdn.co/image/ab67616d0000b273764373507116238dfc7e638d',
         }
       }
     ],
     status: 'online'
   });
 
-  console.log('✅ Presence active: No Images - Only Text, Timer & Spotify!');
+  console.log('✅ Presence active!');
 });
 
 client.login(process.env.TOKEN);
